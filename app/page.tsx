@@ -78,7 +78,7 @@ export default function HomePage() {
                   <div>&nbsp;&nbsp;{"}"}</div>
                   <div>{"}"}</div>
                   <div>&nbsp;</div>
-                  <div><span className="code-comment">{"// Ready to ship at scale ⚡"}</span></div>
+                  <div><span className="code-comment">{"// Ready to ship at scale"}</span></div>
                 </code>
               </div>
             </Reveal>
@@ -296,8 +296,7 @@ export default function HomePage() {
       <footer>
         <div className="container">
           <p>
-            © 2026 {profile.name}. Built with <span style={{ color: "var(--accent-primary)" }}>⚡</span> and zero
-            dependencies.
+            © 2026 {profile.name}
           </p>
         </div>
       </footer>
