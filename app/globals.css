@@ -158,10 +158,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-toggle-btn {
+  margin-right: 8px;
   background: transparent;
   border: none;
   color: var(--text-primary);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
 }
@@ -896,6 +897,7 @@ footer {
   letter-spacing: 0.15em;
   opacity: 0;
   transition: opacity 0.5s ease;
+  font-size: 2.5rem;
 }
 
 .loader-tagline.show { opacity: 1; }
