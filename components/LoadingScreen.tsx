@@ -24,7 +24,6 @@ export default function LoadingScreen() {
     return () => clearInterval(typeInterval);
   }, []);
   
-
   return (
     <div className={`loading-screen${hidden ? " hidden" : ""}`} aria-hidden={hidden}>
       <div>
