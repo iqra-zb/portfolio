@@ -25,6 +25,7 @@ export default function Navbar() {
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
+  
 
   return (
     <>
