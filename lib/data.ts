@@ -33,7 +33,7 @@ export const projects: Project[] = [
     logoClass: "dh",
     name: "DriniHotels",
     type: "B2B/B2C Travel Platform",
-    categories: ["saas", "enterprise", "fintech"],
+    categories: ["enterprise", "fintech"],
     problem:
       "DriniHotels needed its transfer booking lifecycle — payments, cancellations, refunds — fully automated to scale past manual, error-prone handling.",
     action:
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     logoClass: "ic",
     name: "ICRAPP CRM",
     type: "Sales Automation Platform",
-    categories: ["crm", "saas", "enterprise"],
+    categories: ["crm", "enterprise"],
     problem:
       "Client operations relied on developers for routine tasks, and the platform needed to support 2 independent mobile app teams while scaling to 10,000+ daily users.",
     action:
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     logoClass: "cb",
     name: "AI Property Assistant",
     type: "AI-Powered Property Search",
-    categories: ["ai", "saas"],
+    categories: ["ai",],
     problem:
       "Property buyers had to manually sift through listings and imagine renovations themselves, making search-to-decision painfully slow and disconnected from what a space could actually look like.",
     action:
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     logoClass: "sb",
     name: "ShopperBuilder",
     type: "Dynamic Storefront & Catalog",
-    categories: ["ecommerce", "inventory", "saas"],
+    categories: ["ecommerce", "inventory"],
     problem:
       "Merchants needed to customize store layouts and manage large product catalogs, but rigid, code-dependent systems made changes slow and costly.",
     action:
@@ -108,7 +108,7 @@ export const projects: Project[] = [
     logoClass: "ao",
     name: "Aortery",
     type: "Supplier-Buyer Marketplace",
-    categories: ["ecommerce", "fintech", "saas"],
+    categories: ["ecommerce", "fintech",],
     problem:
       "A two-sided supplier-buyer marketplace needed reliable transaction handling and an organized listing flow to support smooth buying and selling at scale.",
     action:
