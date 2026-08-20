@@ -1,6 +1,6 @@
 :root {
-  --accent-primary: #ffb000;
-  --accent-secondary: #ff6b35;
+  --accent-primary: rgba(186,148,97,1);
+  --accent-secondary: rgb(127, 94, 52);
   --accent-tertiary: #ffd166;
   --bg-primary: #0a0806;
   --bg-secondary: #14100a;
