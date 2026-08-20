@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "Pioneered an AI property assistant in Laravel, integrating the OpenAI API with home-design APIs to generate AI-powered redesign visualizations alongside live property search results.",
     result:
       "Cut search-to-decision time to under 2 minutes, processing 30+ inquiries per hour.",
-    stack: ["Laravel", "OpenAI API", "REST APIs", "Home-Design APIs"],
+    stack: ["Laravel", "OpenAI API", "RAG", "Vector Database", "REST APIs", "Home-Design APIs"],
   },
   {
     id: "shopperbuilder",
@@ -137,6 +137,16 @@ export type SkillGroup = {
 };
 
 export const skillGroups: SkillGroup[] = [
+  {
+    title: "AI & ML",
+    skills: [
+      { name: "Python", icon: "🐍", color: "#3776ab" },
+      { name: "FastAPI", icon: "⚡", color: "#009688" },
+      { name: "LangChain", icon: "🔗", color: "#1c3c3c" },
+      { name: "RAG", icon: "📚", color: "#00ff88" },
+      { name: "Vector Databases", icon: "🧬", color: "#7c3aed" },
+    ],
+  },
   {
     title: "AI & Payments",
     skills: [
@@ -264,6 +274,156 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export type ExperienceItem = {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  points: string[];
+};
+
+export const experience: ExperienceItem[] = [
+  {
+    company: "DevioTech",
+    role: "Senior Laravel Developer",
+    period: "Feb 2025 — Present",
+    location: "Lahore",
+    points: [
+      "Spearheaded an OpenAI-powered RAG assistant, cutting property search-to-decision time to under 2 minutes using vector database retrieval.",
+      "Engineered DriniHotel's transfer booking module, automating the full booking lifecycle and integrating the KiwiTaxi API, scaling to 1,000+ bookings/month.",
+      "Architected Aortery's multi-vendor marketplace, enabling 1,000+ daily transactions through Stripe payment integration.",
+      "Improved performance across 6+ products by 40% by optimizing MySQL queries and implementing Redis caching.",
+    ],
+  },
+  {
+    company: "BearPlex — Driving Innovation",
+    role: "Laravel Developer",
+    period: "Aug 2023 — Dec 2024",
+    location: "Lahore",
+    points: [
+      "Spearheaded the decoupling of PeoplePlus's monolith into a versioned RESTful API, enabling 5+ independent modules and supporting 10+ enterprise clients.",
+      "Built the Job Finder Portal's backend using Node.js, expanding BearPlex's product line beyond its core Laravel platform.",
+      "Engineered a real-time Chat module using Supabase for 10+ enterprise clients on the PeoplePlus platform.",
+      "Mentored 2 developers in secure coding, increasing test coverage and reducing production bugs.",
+    ],
+  },
+  {
+    company: "Hello World Technologies",
+    role: "Laravel Developer",
+    period: "Apr 2022 — Aug 2023",
+    location: "Lahore",
+    points: [
+      "Built ICRAPP CRM's core API from the ground up in Laravel, enabling 2 independent mobile app teams to ship in parallel.",
+      "Reduced developer dependency by 25% by building a self-serve admin panel using Laravel, Blade, and MySQL.",
+      "Maintained sub-second response times for 10,000+ daily users by optimizing MySQL queries and caching.",
+      "Increased user onboarding efficiency by 15% by integrating GitHub, Google, and Facebook OAuth social login.",
+    ],
+  },
+  {
+    company: "Hello World Technologies",
+    role: "Junior Web Developer",
+    period: "Dec 2021 — Mar 2022",
+    location: "Lahore, Punjab, Pakistan",
+    points: [
+      "Engineered 3 responsive admin dashboards and 5+ CRUD systems for the NFC-Allset barber shop app.",
+      "Reduced API response issues by 15% by optimizing backend performance bottlenecks, earning a promotion within 4 months.",
+    ],
+  },
+  {
+    company: "IT Centre Rahim Yar Khan",
+    role: "Full Stack Intern",
+    period: "Sep 2021 — Nov 2021",
+    location: "Rahim Yar Khan",
+    points: [
+      "Built 10+ responsive websites and first production Laravel backend systems using Laravel, PHP, HTML, CSS, and JavaScript.",
+      "Practiced foundational MVC architecture and RESTful routing patterns across multiple client projects.",
+    ],
+  },
+];
+
+export const education = {
+  school: "Khwaja Fareed University of Engineering & Information Technology",
+  degree: "Bachelor of Science, Computer Science",
+  period: "Oct 2018 — Jul 2022",
+};
+
+export type Certification = {
+  name: string;
+  issuer: string;
+  date: string;
+};
+
+export const certifications: Certification[] = [
+  { name: "Software Engineer Certificate", issuer: "HackerRank", date: "Jul 2026" },
+  { name: "Python (Basic) Certificate", issuer: "HackerRank", date: "Jul 2026" },
+  { name: "Claude 101", issuer: "Anthropic", date: "Jul 2026" },
+  { name: "Full Stack Web Development", issuer: "Certificate", date: "" },
+];
+
+export type Service = {
+  icon: string;
+  title: string;
+  description: string;
+};
+
+export const services: Service[] = [
+  {
+    icon: "🤖",
+    title: "AI & RAG Integration",
+    description:
+      "Production-grade RAG pipelines, vector search, and LLM integration with LangChain and the OpenAI API — built to survive real traffic, not just demos.",
+  },
+  {
+    icon: "🏗️",
+    title: "Backend Architecture",
+    description:
+      "Clean, versioned REST APIs and service-oriented backends in Laravel and FastAPI, decoupled from the frontend and designed to scale past MVP.",
+  },
+  {
+    icon: "⚡",
+    title: "Performance Optimization",
+    description:
+      "Query optimization, Redis caching, and queue-based architectures that cut API response times — 40% average improvement across 6+ production products.",
+  },
+  {
+    icon: "🧩",
+    title: "Multi-Tenant SaaS Systems",
+    description:
+      "Multi-tenant platforms with proper data isolation, subscription billing via Stripe, and automated provisioning — built for PeoplePlus, CatalogPoint, and Aortery.",
+  },
+];
+
+export type Testimonial = {
+  name: string;
+  title: string;
+  quote: string;
+  relationship: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Imran Sharif",
+    title: "Senior Full Stack & Agentic AI Developer | RAG, LangChain, LLMs",
+    relationship: "Worked with Iqra on the same team",
+    quote:
+      "I had the pleasure of working with Iqra Ramzan on the same team and was consistently impressed by her technical expertise and professionalism. Highly skilled Senior Backend Engineer with strong experience in Laravel, PHP 8, and Node.js. She has a deep understanding of scalable SaaS architectures and consistently delivers high-quality, maintainable solutions. I would highly recommend Iqra to any organization looking for a talented backend engineer.",
+  },
+  {
+    name: "Ayesha Aslam",
+    title: "Tech & Non-Tech Recruiter | Talent Acquisition Expert",
+    relationship: "Iqra was Ayesha's client",
+    quote:
+      "Iqra developed our backend system from scratch and turned our ideas into a reliable, production-ready solution. She has a strong understanding of Laravel, backend architecture, and database design, and consistently approaches problems with a business mindset rather than just writing code. I would happily work with her again and highly recommend her for backend development projects.",
+  },
+  {
+    name: "Tallha Mushtaq",
+    title: "Senior Software Engineer @Innovation Insight",
+    relationship: "Worked with Iqra on the same team",
+    quote:
+      "I highly recommend Iqra Ramzan as a Software Engineer. She excels in Laravel & Livewire, React.js & Firebase, and Supabase. Her expertise spans end-to-end operations, ensuring seamless deployment. Iqra's dedication and skill make her a valuable asset to any team.",
+  },
+];
+
 export const profile = {
   name: "Iqra Ramzan",
   email: "iqra046cs@gmail.com",
@@ -271,10 +431,10 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/iqra-ramzan-dev",
   github: "https://github.com/iqra-zb",
   heroTypingWords: [
+    "I Ship Production RAG.",
     "I Scale SaaS Past MVP.",
     "I Build Systems That Scale.",
-    "I Optimize The Backend.",
-    "I Ship Performance.",
+    "I Ship AI Performance.",
   ],
   heroStats: [
     { number: "4+", label: "Years Building" },

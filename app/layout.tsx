@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Senior Backend Engineer | Laravel & AI-Integrated SaaS Systems",
+  title: "Backend → AI Engineer | RAG, LangChain & AI-Integrated SaaS Systems",
   description:
-    "Senior Backend Engineer specializing in Laravel & AI-integrated SaaS systems. Laravel, AWS, Redis expert who scales companies past MVP.",
+    "Backend → AI Engineer specializing in RAG, LangChain, and OpenAI-integrated SaaS systems. Python, FastAPI, Laravel expert who ships production-grade AI features.",
   icons: { icon: "/favicon.svg" },
 };
 

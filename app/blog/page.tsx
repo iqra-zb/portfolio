@@ -5,9 +5,9 @@ import Reveal from "@/components/Reveal";
 import { blogPosts, profile } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `Blog | ${profile.name} — Senior Backend Engineer`,
+  title: `Blog | ${profile.name} — Backend → AI Engineer`,
   description:
-    "Notes on Laravel performance, AI integration, and SaaS architecture from a Senior Backend Engineer.",
+    "Notes on RAG, AI integration, Laravel performance, and SaaS architecture from a Backend → AI Engineer.",
 };
 
 export default function BlogListPage() {

@@ -32,7 +32,7 @@ export default function LoadingScreen() {
           <span className="typing-cursor" />
         </div>
         <div className={`loader-tagline${showTagline ? " show" : ""}`}>
-          Backend Engineer
+          Backend → AI Engineer
         </div>
       </div>
     </div>
