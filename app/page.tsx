@@ -223,7 +223,7 @@ export default function HomePage() {
       <ProjectsSection />
 
       {/* Skills */}
-      <section id="skills">
+      {/* <section id="skills">
         <div className="container">
           <Reveal>
             <span className="section-label">// Tech Stack</span>
@@ -251,7 +251,7 @@ export default function HomePage() {
             ))}
           </Reveal>
         </div>
-      </section>
+      </section> */}
 
       {/* Services */}
       <section id="services" style={{ background: "var(--bg-secondary)" }}>
@@ -281,7 +281,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials">
+      {/* <section id="testimonials">
         <div className="container">
           <Reveal>
             <span className="section-label">// Recommendations</span>
@@ -312,7 +312,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Blog teaser */}
       <section id="blog" style={{ background: "var(--bg-secondary)" }}>
