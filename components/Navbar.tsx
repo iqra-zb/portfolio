@@ -11,8 +11,8 @@ const NAV_LINKS = [
   { id: "resume", href: "/#resume", label: "Resume" },
   { id: "projects", href: "/#projects", label: "Portfolio" },
   { id: "services", href: "/#services", label: "Services" },
-  { id: "skills", href: "/#skills", label: "Skills" },
-  { id: "testimonials", href: "/#testimonials", label: "Testimonials" },
+  // { id: "skills", href: "/#skills", label: "Skills" },
+  // { id: "testimonials", href: "/#testimonials", label: "Testimonials" },
   { id: "blog", href: "/blog", label: "Blog" },
   { id: "contact", href: "/#contact", label: "Contact" },
 ];
