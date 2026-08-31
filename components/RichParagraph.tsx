@@ -5,7 +5,7 @@ export function RichParagraph({ text }: { text: string }) {
   // Subheading: paragraph starting with "## "
   if (text.startsWith("## ")) {
     return (
-      <h3 className="text-lg font-semibold !text-white mt-8 mb-3">
+      <h3 className="text-lg font-semibold  mt-8 mb-3">
         {text.replace("## ", "")}
       </h3>
     );
