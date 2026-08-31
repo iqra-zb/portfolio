@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/Reveal";
 import { blogPosts, profile } from "@/lib/data";
-
+  import { RichParagraph } from "@/components/RichParagraph";
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
@@ -49,8 +49,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             </Reveal>
             <Reveal delay={3}>
               <div className="article-body">
-                {post.body.map((para, i) => (
-                  <p key={i}>{para}</p>
+                {post.body.map((paragraph, i) => (
+                  <RichParagraph key={i} text={paragraph} />
                 ))}
               </div>
             </Reveal>

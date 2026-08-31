@@ -13,6 +13,21 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "waypoint",
+    logo: "WP",
+    logoClass: "wp",
+    name: "Waypoint",
+    type: "AI Agent Reliability Runtime",
+    categories: ["ai", "enterprise"],
+    problem:
+      "AI agents fail mid-execution constantly — a timeout, a rate limit, a crashed worker — and most systems either restart from scratch, re-running completed and costly steps, or silently resume from corrupted state.",
+    action:
+      "Built a self-hosted reliability runtime on Django, Celery, and Redis implementing checkpoint-based recovery, two-layer idempotency, and environment-fingerprint validation so a resumed run can't silently continue on a changed model or prompt version. Added real-time WebSocket trace streaming via Django Channels and a Chaos Lab for controlled fault injection (worker crash, LLM timeout, checkpoint corruption) to validate recovery under real failure conditions.",
+    result:
+      "Delivered retry-from-failed-step recovery, tenant-isolated live execution tracing, and per-attempt cost accounting that exposed failed retries as a measurable share of total run cost in test scenarios — a visibility gap most comparable durable-execution frameworks don't surface.",
+    stack: ["Django", "DRF", "Celery", "Redis", "PostgreSQL", "Django Channels", "Docker", "React"],
+  },
+  {
     id: "peopleplus",
     logo: "P+",
     logoClass: "pp",
@@ -270,6 +285,35 @@ export const blogPosts: BlogPost[] = [
       `Laravel's conventions are optimized for shipping fast, not for strict layer separation — Eloquent models want to be both your data layer and your business logic layer at once, and fighting that too hard, too early, slows a small team down for no real benefit.`,
       `What actually justified the investment on PeoplePlus was scale of change, not scale of traffic. Once we were supporting 5+ independent modules and mentoring other developers on the codebase, the cost of not having clear boundaries — service classes separated from controllers, repository interfaces instead of direct Eloquent calls scattered through business logic — started outweighing the setup cost. Versioned REST APIs made this concrete: you can't decouple a frontend from a backend that doesn't have clean seams to begin with.`,
       `What I'd do differently starting over: introduce the architecture boundaries as soon as a second developer joins the project, not when the codebase is already large enough that refactoring feels risky. Clean Architecture is cheap when the codebase is small and expensive when it isn't — the trigger isn't traffic, it's team size and how many hands are touching the same modules.`,
+    ],
+  },
+  {
+    slug: "ai-agent-durable-execution",
+    tag: "AI Infrastructure",
+    readTime: "4 min read",
+    date: "Aug 2026",
+    title: "Shipping a Durable Execution Engine For AI Agents",
+    excerpt:
+      "A demo agent runs once and works. Nobody asks what happens when step 3 of 5 times out after steps 1 and 2 already cost money. Building Waypoint taught me why that question matters more than the prompt ever did.",
+    body: [
+      `A demo agent runs once, works, and everyone moves on. Nobody asks what happens when step 3 of a 5-step agent times out after steps 1 and 2 already cost money and made external calls. That question is where **Waypoint**, a side project I built to answer it properly, started.`,
+
+      `## Where the idea came from`,
+      `I'd shipped a RAG assistant in production and watched it fail the boring way real systems fail — an occasional timeout, an occasional worker restart. The naive fix, "just retry the whole thing," works fine until the agent has already called a paid API or written a record, and now retrying means doing it twice.`,
+      `I looked at how the industry actually solves this: **Temporal**, **Restate**, **Inngest**, and **Hatchet** on the infrastructure side, and **Diagrid's Catalyst** layer for agent frameworks like LangGraph specifically. All of them solve durable execution — resume instead of restart. But each solves one slice of it, and as of mid-2026 none of them check whether the environment an agent resumes into still means the same thing it did when it crashed.`,
+      `That gap became the actual thesis: **a resumed agent isn't safe just because its state persisted** — it's only safe if the model, prompt, and tools it resumes with still mean what they meant when it checkpointed.`,
+
+      `## The stack, and what actually broke`,
+      `The build was **Django + DRF** for the API layer, **Celery + Redis** for durable background execution outside the request/response cycle, **Django Channels** for real-time WebSocket tracing, and **PostgreSQL** underneath, all Dockerized.`,
+      `The hardest part was the async/sync boundary inside the executor, which needs \`asyncio.gather()\` for concurrent tool calls while Django's ORM stays fundamentally synchronous. Getting that wrong the first time meant a thread-per-event hack just to publish WebSocket updates safely; ripping it out for proper \`sync_to_async\` was the single biggest refactor of the project.`,
+      `Checkpoint atomicity was its own lesson — "persist output, persist checkpoint, commit, emit event" has to be all-or-nothing. I didn't trust my own context manager until I wrote a test that deliberately failed halfway through and confirmed everything rolled back together.`,
+
+      `## What it does now`,
+      `**Checkpoint-based recovery** so a failed run resumes from its last successful step instead of from scratch. **Two-layer idempotency** so neither a duplicate client request nor a duplicate internal retry creates duplicate work. **Environment-fingerprint validation** that flags a resume instead of silently proceeding on a changed model or prompt version. Tenant-isolated live WebSocket tracing, per-attempt cost accounting, and a small **Chaos Lab** command that grew out of literally killing a worker process mid-run to prove recovery actually worked.`,
+      `OpenTelemetry export, an MCP connector, and a full reliability benchmark are still on the roadmap, not built.`,
+
+      `## The lesson`,
+      `Durable execution is solved enough that well-funded companies compete on it. What's not solved is that **"the state persisted" and "it's safe to resume" are different claims** — and most tools stop at the first one.`,
     ],
   },
 ];
