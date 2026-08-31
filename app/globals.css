@@ -900,8 +900,9 @@ section { padding: 100px 0; position: relative; }
 .article-body { font-size: 1.05rem; line-height: 1.85; color: var(--text-secondary); }
 .article-body p { margin-bottom: 1.5rem; }
 .article-body p:last-child { margin-bottom: 0; }
+
 .article-body h3 {
-  --text-secondary: #ffffff;
+  color: #ffffff;
 }
 
 
