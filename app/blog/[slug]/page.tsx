@@ -1,80 +1,56 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Navbar from "@/components/Navbar";
-import Reveal from "@/components/Reveal";
-import { blogPosts, profile } from "@/lib/data";
-  import { RichParagraph } from "@/components/RichParagraph";
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { blogPosts, getPostBySlug } from '../../../data/blogPosts';
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export function generateMetadata({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug);
   if (!post) return {};
   return {
-    title: `${post.title} | ${profile.name}`,
+    title: `${post.title} — Iqra Ramzan`,
     description: post.excerpt,
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
-  if (!post) notFound();
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+export default function BlogDetailPage({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug);
+  if (!post) return notFound();
 
   return (
-    <>
-      <Navbar />
-      <section className="page-hero">
-        <div className="container">
-          <div className="container-narrow">
-            <Reveal>
-              <a href="/blog" className="back-link">
-                <span>←</span>
-                <span>Back to all posts</span>
-              </a>
-            </Reveal>
-            <Reveal delay={1}>
-              <div className="blog-meta">
-                <span className="blog-tag">{post.tag}</span>
-                <span className="blog-read-time">{post.readTime}</span>
-                <span className="article-date">{post.date}</span>
-              </div>
-            </Reveal>
-            <Reveal delay={2}>
-              <h1 className="article-title">{post.title}</h1>
-            </Reveal>
-            <Reveal delay={3}>
-              <div className="article-body">
-                {post.body.map((paragraph, i) => (
-                  <RichParagraph key={i} text={paragraph} />
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={4}>
-              <div className="article-cta">
-                <p>If your team is building something that needs to survive growth, let&apos;s talk.</p>
-                <a href="/#contact" className="btn-hire">
-                  <span>Get In Touch</span>
-                  <span>→</span>
-                </a>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-      <footer>
-        <div className="container">
-          <p>
-            © 2026 {profile.name}. Built with{" "}
-            <span style={{ color: "var(--accent-primary)" }}>⚡</span> and zero
-            dependencies.
-          </p>
-        </div>
-      </footer>
-    </>
+    <div className="max-w-2xl mx-auto px-6 py-24">
+      <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors nl mb-10">
+        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+        </svg>
+        Back to all posts
+      </Link>
+
+      <div className="flex items-center gap-3 mb-4">
+        <span className="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">{post.category}</span>
+        <span className="text-xs text-zinc-400">{post.readTime}</span>
+        <span className="text-xs text-zinc-400">&middot;</span>
+        <span className="text-xs text-zinc-400">{formatDate(post.date)}</span>
+      </div>
+
+      <h1 className="font-display font-bold text-3xl md:text-4xl text-zinc-900 dark:text-white leading-tight mb-8">{post.title}</h1>
+
+      <div className="space-y-5">
+        {post.content.map((paragraph, i) => (
+          <p key={i} className="text-zinc-600 dark:text-zinc-300 leading-relaxed">{paragraph}</p>
+        ))}
+      </div>
+
+      <div className="mt-14 pt-8 border-t border-zinc-100 dark:border-zinc-900 flex items-center justify-between">
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">Written by Iqra Ramzan</p>
+        <a href="mailto:iqra046cs@gmail.com" className="text-sm font-medium text-accent nl">Get in touch →</a>
+      </div>
+    </div>
   );
 }

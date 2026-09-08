@@ -1,8 +1,11 @@
-# Iqra Ramzan — Portfolio (Next.js)
+# Iqra Ramzan — Portfolio (Next.js + TypeScript)
 
-A Next.js 14 (App Router + TypeScript) rebuild of the original static portfolio site.
-Same dark theme, same content, same interactions — rebuilt with proper React
-patterns instead of vanilla DOM scripting.
+Personal portfolio and blog, built with Next.js (App Router) and Tailwind CSS.
+Theme: orange accent (`#FF6B2B`), zinc dark/light mode, PT Sans + DM Sans.
+
+**Live sections:** Hero · About · Work (case studies) · Experience · Services · Blog · Contact
+
+---
 
 ## Getting started
 
@@ -11,72 +14,125 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000
-
-## Build for production
+Open [http://localhost:3000](http://localhost:3000).
 
 ```bash
-npm run build
-npm run start
+npm run build   # production build
+npm run start   # run the production build locally
 ```
+
+---
 
 ## Project structure
 
 ```
 app/
-  layout.tsx          Root layout — fonts, global CSS, cursor, loading screen
-  page.tsx             Homepage (hero, about, projects, skills, blog teaser, contact)
-  globals.css          All design tokens & component styles (ported from the original site)
+  layout.tsx            Root layout — fonts, dark mode class, Header/Footer
+  page.tsx               Home page — stacks all sections (Hero → Contact)
+  globals.css             Global styles (scrollbar, hover/underline effects, shimmer)
   blog/
-    page.tsx            Blog listing page
-    [slug]/page.tsx      Dynamic article page (statically generated per post)
+    page.tsx              Full blog listing (all posts)
+    [slug]/page.tsx        Dynamic blog detail page — one template for every post
+  not-found.tsx           Custom 404
 
 components/
-  Navbar.tsx            Nav bar + slide-in mobile sidebar (React state, no Bootstrap JS)
-  Cursor.tsx             Custom cursor (dot + lagging ring)
-  LoadingScreen.tsx      Name-typing intro animation
-  HeroTyping.tsx         Rotating hero headline text
-  Reveal.tsx              Scroll-reveal wrapper (IntersectionObserver)
-  ProjectsSection.tsx    Case studies grid with category filtering
+  Header.tsx              Sticky nav, anchor links + dark mode toggle
+  Footer.tsx
+  ThemeToggle.tsx          Dark/light toggle (persists to localStorage)
+  Hero.tsx
+  About.tsx
+  Work.tsx                 Case studies grid — reads from data/projects.ts
+  Experience.tsx           Work history + education (from LinkedIn)
+  Services.tsx
+  BlogPreview.tsx          3 most recent posts, shown on the home page
+  BlogCard.tsx             Shared card used by BlogPreview and /blog
+  Contact.tsx
 
-lib/
-  data.ts               All content — projects, skills, blog posts, profile info.
-                         Edit this file to update anything on the site.
+data/
+  projects.ts              All case studies — typed, one object per project
+  blogPosts.ts              All blog posts — typed, one object per post
+
+public/
+  logos/                   SVG project logos (48×48, consistent icon style)
 ```
 
-## Editing content
+---
 
-Everything text-based — project case studies, skills, blog posts, stats, contact
-info — lives in `lib/data.ts`. You don't need to touch any component or page file
-to update copy; just edit the data arrays.
+## Adding a new blog post
 
-To add a new blog post: add an entry to the `blogPosts` array in `lib/data.ts`.
-A page at `/blog/your-slug` is generated automatically — no new files needed.
+Open `data/blogPosts.ts` and add an object to the `blogPosts` array:
 
-To add a new project case study: add an entry to the `projects` array. Pick an
-existing `logoClass` (pp/dh/cp/ic/cb/sb/ao) or add a new one + matching gradient
-in `globals.css` under `.project-logo.<class>`.
-
-## Notes on what changed from the static HTML version
-
-- Bootstrap (CSS + JS) was dropped. Layout now uses plain CSS Grid (`.grid`,
-  `.grid-2`, `.grid-3`, `.grid-4` utility classes in `globals.css`), and the
-  mobile nav sidebar is now controlled by React state instead of Bootstrap's
-  Offcanvas JS component.
-- The staggered per-line fade-in animation on the hero code block was
-  simplified — the whole block now fades in once via the shared `Reveal`
-  component rather than animating each line individually.
-- Social icons in the contact section are simple text glyphs as placeholders
-  (originally inline SVGs) — swap in `lucide-react` or your own SVGs if you'd
-  like the original icon look back.
-
-## Deploying
-
-This is a standard Next.js app — deploys directly to Vercel:
-
-```bash
-npx vercel
+```ts
+{
+  slug: 'your-post-slug',
+  title: 'Your Post Title',
+  category: 'Category',
+  readTime: '5 min read',
+  date: '2026-01-01',
+  excerpt: 'One or two sentence summary shown on the card.',
+  content: [
+    'First paragraph.',
+    'Second paragraph.',
+  ],
+},
 ```
 
-or connect the repo in the Vercel dashboard. No environment variables or
-extra config needed.
+It automatically appears on the home page preview (if recent), on `/blog`, and gets its own page at `/blog/your-post-slug`. No other file needs to change.
+
+---
+
+## Adding a new project / case study
+
+Open `data/projects.ts` and add an object to the `projects` array:
+
+```ts
+{
+  code: 'XX',                 // 2-letter fallback badge, used only if no logo is set
+  name: 'Project Name',
+  tagline: 'Short one-liner',
+  category: 'Category',
+  problem: '...',
+  action: '...',
+  result: '...',
+  tags: ['Tech', 'Stack', 'Here'],
+  logo: '/logos/your-icon.svg',  // optional — omit to show the code badge instead
+},
+```
+
+It shows up automatically in the Work section on the home page.
+
+### Project logos
+
+All current logos are hand-drawn SVGs in `public/logos/`, 48×48px, same rounded-square + icon style, so they stay visually consistent no matter the project. To add a new one:
+- Keep the `viewBox="0 0 48 48"` and rounded-square (`rx="14"`) background convention used by the existing files.
+- If a project has no distinct icon mark, just omit `logo` from its entry — it'll fall back to a colored badge using `code`.
+
+---
+
+## Updating your info
+
+| What | Where |
+|---|---|
+| Hero tagline, stats | `components/Hero.tsx` |
+| About bio, skills list | `components/About.tsx` |
+| Work history, education, certifications | `components/Experience.tsx` |
+| Services offered | `components/Services.tsx` |
+| Email, LinkedIn, GitHub, location | `components/Contact.tsx` and `components/Footer.tsx` |
+| Site title/description (SEO) | `app/layout.tsx` → `metadata` |
+
+---
+
+## Tech stack
+
+- [Next.js 14](https://nextjs.org/) (App Router)
+- TypeScript
+- Tailwind CSS
+- next/font (self-optimized Google Fonts: PT Sans, DM Sans)
+
+No external UI libraries — all components are hand-built to match the theme exactly.
+
+---
+
+## Deploy
+
+Push to GitHub and import into [Vercel](https://vercel.com/new) — zero configuration needed, it's a standard Next.js app. Any other Node host (Netlify, Railway, your own server) works too via `npm run build && npm run start`.
