@@ -13,7 +13,7 @@ export default function Hero() {
               Hi, I&apos;m <span className="text-accent">Iqra</span>
             </h1>
             <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-md mb-10">
-              Backend engineer turned <strong className="font-medium text-zinc-700 dark:text-zinc-300">AI Engineer</strong>. I design systems that survive production — from RAG-powered assistants to platforms handling 10,000+ daily users and 1,000+ daily transactions.
+              Backend engineer building AI and RAG systems that hold up in production. Four years across fintech, hospitality, and enterprise SaaS, from an OpenAI-powered RAG assistant to platforms serving 10,000+ daily users and 1,000+ daily transactions.
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#work" className="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
