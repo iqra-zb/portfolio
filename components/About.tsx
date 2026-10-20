@@ -1,8 +1,8 @@
 const TRAITS = [
-  { icon: '🚀', title: 'Scale-first mindset', body: 'Every architecture decision is made with 10x growth in mind. No rewrites needed at scale.' },
-  { icon: '⚡', title: 'Performance obsessed', body: "I benchmark everything. If there's a millisecond to save, I'll find it. Caching is an art." },
-  { icon: '🏗️', title: 'System design expert', body: 'From monoliths to microservices, queues to event-driven systems — I build what fits the problem.' },
-  { icon: '🎯', title: 'Business impact focus', body: 'Code is a means to an end. I measure success in user satisfaction, uptime, and revenue growth.' },
+  { icon: '🤖', title: 'AI & RAG', body: 'Shipped an OpenAI-powered RAG assistant with vector retrieval, cutting property search-to-decision time to under 2 minutes.' },
+  { icon: '⚡', title: 'Performance', body: 'Redis caching and query optimization across 6+ products, with 40% faster API responses.' },
+  { icon: '🚀', title: 'Scale', body: 'Built multi-tenant and marketplace platforms (CatalogPoint, Aortery, DriniHotels) handling 1,000+ monthly bookings and 1,000+ daily transactions.' },
+  { icon: '🏗️', title: 'Systems', body: 'Decoupled a monolithic HR SaaS into a versioned RESTful API: 5+ modules, 10+ enterprise clients.' },
 ];
 
 const STACK = [
@@ -17,9 +17,9 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-14">
           <p className="text-xs font-medium text-accent tracking-widest uppercase mb-3">About me</p>
-          <h2 className="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">From tickets to system architecture</h2>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-zinc-900 dark:text-white">From prototype to production</h2>
           <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl mt-4 leading-relaxed">
-            My journey from handling support tickets to shipping 18+ projects — from internship websites to production SaaS and agentic AI platforms — has shaped how I approach backend engineering. Based in Lahore, Pakistan, working remote.
+            Most "AI features" work in a demo, then fall over in production. I build the kind that doesn't. Four years across fintech, hospitality, and enterprise SaaS, taking backend systems and AI features from prototype to something that actually holds up. The gap between a clever proof-of-concept and a system that survives real traffic is where most of the work happens. Based in Lahore, Pakistan, working remote.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-6 mb-14">
