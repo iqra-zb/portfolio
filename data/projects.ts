@@ -42,17 +42,17 @@ export const projects: Project[] = [
     logo: '/logos/domus-ai-icon.svg',
     featured: true,
   },
-  {
+ {
     code: 'P+',
     name: 'PeoplePlus',
     tagline: 'HR SaaS Platform',
     category: 'HR & Recruitment',
     problem:
-      "PeoplePlus's HR platform was tightly coupled to its UI, making it impossible to scale features independently or support new client-facing modules.",
+      "PeoplePlus's HR platform was tightly coupled to its UI, making it hard to scale features independently or add new client-facing modules.",
     action:
-      'Spearheaded the migration to a versioned, decoupled RESTful API supporting 5+ independent modules. Built Project Management and real-time Chat modules on Laravel Queues, Redis, and WebSockets, then deployed into a React/Redux/TypeScript frontend.',
+      'Led the migration to a versioned, decoupled RESTful API supporting 5+ independent modules. Built the employee, asset, and organization-hierarchy modules on Laravel, using Redis-backed queues for background jobs. Built the real-time chat module on Supabase, integrated with the React/Redux/TypeScript frontend.',
     result: 'Expanded platform functionality for 10+ enterprise clients on a decoupled, versioned API architecture.',
-    tags: ['Laravel', 'Redis', 'MySQL', 'REST APIs'],
+    tags: ['Laravel', 'Redis', 'MySQL', 'REST APIs', 'Supabase', 'React'],
     logo: '/logos/peopleplus-icon.svg',
     featured: true,
   },
