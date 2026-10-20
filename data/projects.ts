@@ -33,9 +33,9 @@ export const projects: Project[] = [
     tagline: 'Agentic Real-Estate Discovery Platform',
     category: 'AI',
     problem:
-      'Property buyers had to manually sift through listings and imagine renovations themselves, with no assistant able to search and act on their behalf.',
+      'Property buyers had to manually sift through listings, with no assistant able to search, compare, and act on their behalf.',
     action:
-      'Built a LangGraph ReAct agent with MCP 2.x tool exposure for autonomous property search and booking. Implemented RAG with PostgreSQL + pgvector, hybrid search and LLM reranking, backed by a custom evaluation harness, persistent memory, and guardrailed booking workflows.',
+      'Built a LangGraph ReAct agent with MCP 2.x tool exposure for property search and booking. Implemented RAG with PostgreSQL + pgvector, hybrid search, and LLM reranking, backed by a custom evaluation harness, persistent memory, and guardrailed booking workflows.',
     result:
       'Shipped an agent that can search, reason over, and act on property listings end-to-end, with evaluation tooling in place to catch regressions before they reach users.',
     tags: ['Python', 'LangGraph', 'MCP 2.x', 'PostgreSQL', 'pgvector', 'RAG'],
