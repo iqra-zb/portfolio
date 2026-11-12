@@ -42,6 +42,32 @@ export const projects: Project[] = [
     logo: '/logos/domus-ai-icon.svg',
     featured: true,
   },
+
+{
+  code: 'MS',
+  name: 'MCP Sentinel',
+  tagline: 'AI Agent Security & MCP Gateway',
+  category: 'AI Infrastructure',
+  problem:
+    'MCP servers expose powerful tools to AI agents, but their tool descriptions can contain hidden prompt-injection instructions. Legacy stateful MCP sessions also create reliability and scalability challenges when deployed across distributed environments.',
+  action:
+    'Built a Python FastAPI gateway that bridges stateful MCP clients with stateless infrastructure using Redis-backed session translation. Engineered an automated security scanning pipeline that analyzes MCP tool descriptions for prompt-injection risks using an LLM classifier. Implemented asynchronous scan processing with arq workers, PostgreSQL scan history, database migrations, and Docker Compose orchestration.',
+  result:
+    'Delivered a stateful-to-stateless MCP gateway with automated tool-description security analysis, persistent scan history, and asynchronous processing. Established a foundation for inspecting MCP tool security before exposing tools to AI agents.',
+  tags: [
+    'Python',
+    'FastAPI',
+    'MCP',
+    'Redis',
+    'PostgreSQL',
+    'arq',
+    'LLM Security',
+    'Docker'
+  ],
+  logo: '/logos/mcp-sentinel-icon.svg',
+  featured: true,
+},
+
  {
     code: 'P+',
     name: 'PeoplePlus',
