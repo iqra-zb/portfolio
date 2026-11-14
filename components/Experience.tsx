@@ -2,31 +2,53 @@ const JOBS = [
   {
     role: 'Backend Engineer — DevioTech, Lahore',
     period: 'Feb 2025 — Present',
+    summary:
+      'Backend engineer building RAG and AI features alongside high-volume booking and marketplace platforms. Stack: Laravel, PHP 8, MySQL, Redis, OpenAI API, Stripe.',
     bullets: [
-      'Spearheaded an OpenAI-powered RAG assistant, cutting property search-to-decision time to under 2 minutes.',
-      "Engineered DriniHotel's transfer booking module, scaling to 1,000+ bookings/month.",
-      'Architected Aortery\u2019s multi-vendor marketplace, enabling 1,000+ daily transactions via Stripe.',
-      'Improved performance across 6+ products by 40% via MySQL optimization and Redis caching.',
+      'Built an OpenAI-powered RAG assistant with vector retrieval for property search, cutting search-to-decision time to under 2 minutes.',
+      'Engineered DriniHotels’ transfer booking module end to end, integrating multiple KiwiTaxi APIs and the Quipu payment gateway and automating payments, cancellations, and refunds with Laravel queues and cron jobs, now handling 1,000+ bookings a month.',
+      'Built Aortery’s multi-vendor marketplace with Stripe payments and a two-sided listing flow, supporting 1,000+ daily transactions.',
+      'Contributed to CatalogPoint, a multi-tenant e-commerce SaaS with Stripe subscription billing: developed a multi-grid layout module with customize options and fixed bugs in existing modules.',
     ],
   },
   {
-    role: 'Laravel Developer — BearPlex, Lahore',
+    role: 'Laravel Developer — BearPlex - Driving Innovation, Lahore',
     period: 'Aug 2023 — Dec 2024',
+    summary:
+      'Led backend work on an enterprise HR SaaS, a job portal, and real-time chat. Stack: Laravel, Node.js, Supabase, Redis, React.',
     bullets: [
-      "Spearheaded decoupling PeoplePlus's monolith into a versioned RESTful API for 10+ enterprise clients.",
-      "Built the Job Finder Portal's backend using Node.js.",
-      'Engineered a real-time chat module using Supabase.',
-      'Mentored 2 developers in secure coding, reducing production bugs.',
+      'Moved PeoplePlus from a Livewire monolith to a versioned REST API with a React frontend across 5+ modules, supporting 10+ enterprise clients. Started on a 3-person backend team, then became lead developer.',
+      'Owned all PeoplePlus APIs as lead: new endpoints, new modules, and the backend for a project management module similar to ClickUp and Asana.',
+      'Cut API response times by 40% on PeoplePlus by optimizing MySQL queries and adding Redis caching.',
+      'Built the real-time chat module on Supabase for the React frontend, giving enterprise clients live messaging.',
+      'Built the Job Finder Portal’s backend in Node.js, extending the team’s stack beyond Laravel.',
+      'Rebuilt legacy Livewire views in React, Redux, and TypeScript, replacing fragile state handling.',
     ],
   },
   {
     role: 'Laravel Developer — Hello World Technologies, Lahore',
     period: 'Apr 2022 — Aug 2023',
+    summary: 'Built ICRAPP CRM from scratch. Stack: Laravel, MySQL, REST APIs.',
     bullets: [
-      "Built ICRAPP CRM's core API from the ground up, enabling 2 mobile app teams to ship in parallel.",
-      'Reduced developer dependency by 25% with a self-serve admin panel.',
-      'Maintained sub-second response times for 10,000+ daily users.',
-      'Increased onboarding efficiency by 15% via GitHub, Google, and Facebook OAuth.',
+      'Built ICRAPP CRM’s core REST API from scratch in Laravel, enabling 2 independent mobile teams to ship in parallel.',
+      'Built a self-serve admin panel with Laravel, Blade, and MySQL, reducing developer dependency by 25% for routine tasks.',
+      'Optimized MySQL queries and added caching, sustaining sub-second responses for 10,000+ daily users as data grew.',
+      'Integrated GitHub, Google, and Facebook OAuth, improving onboarding efficiency by 15%.',
+    ],
+  },
+  {
+    role: 'Junior Web Developer — Hello World Technologies, Lahore',
+    period: 'Dec 2021 — Mar 2022',
+    bullets: [
+      'Built 3 admin dashboards and 5+ CRUD modules for the NFC-Allset barber app with Laravel, MySQL, and JavaScript, giving internal teams visibility over services and bookings.',
+      'Reduced API response issues by 15% by optimizing Laravel and MySQL bottlenecks, earning a promotion within 4 months.',
+    ],
+  },
+  {
+    role: 'Full Stack Intern — IT Centre Rahim Yar Khan',
+    period: 'Sep 2021 — Nov 2021',
+    bullets: [
+      'Built 10+ responsive websites and my first production Laravel backends, practicing MVC architecture and RESTful routing.',
     ],
   },
 ];
@@ -59,6 +81,9 @@ export default function Experience() {
                 <h3 className="font-display font-bold text-lg text-zinc-900 dark:text-white">{job.role}</h3>
                 <span className="text-xs text-accent font-medium">{job.period}</span>
               </div>
+              {job.summary && (
+                <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mb-3">{job.summary}</p>
+              )}
               <ul className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed list-disc pl-4 space-y-1">
                 {job.bullets.map((b) => (
                   <li key={b}>{b}</li>
